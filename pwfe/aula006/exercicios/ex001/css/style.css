@@ -1,0 +1,21 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.model {
+  display: none;
+}
+.card {
+  margin: 10px 0 10px 10px;
+}
+button {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+  box-shadow: 2px 2px 2px 2px #e5e5e5;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #a5a5a5;
+}
