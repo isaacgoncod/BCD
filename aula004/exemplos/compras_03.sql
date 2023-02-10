@@ -1,0 +1,45 @@
+DROP DATABASE IF EXISTS compras_03;
+
+CREATE DATABASE compras_03 CHARSET=UTF8 COLLATE utf8_general_ci;
+USE compras_03;
+
+CREATE TABLE cliente(
+  cpf VARCHAR(20) NOT NULL PRIMARY KEY,
+  nome VARCHAR(50) NOT NULL,
+  cep VARCHAR(10) NOT NULL,
+  num_casa VARCHAR(5) NOT NULL,
+  complemento VARCHAR(25)
+);
+CREATE TABLE pedido(
+  cpf_cliente VARCHAR(20) NOT NULL,
+  num_compra INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  data_compra DATE NOT NULL,
+  data_vencimento DATE NOT NULL,
+  pagamento DATE,
+  valor FLOAT,
+  FOREIGN KEY(cpf_cliente) REFERENCES cliente(cpf) ON DELETE CASCADE ON UPDATE CASCADE
+);
+CREATE TABLE telefone(
+  cpf_cliente VARCHAR(20) NOT NULL,
+  telefone VARCHAR(15) NOT NULL,
+  FOREIGN KEY(cpf_cliente) REFERENCES cliente(cpf) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO cliente VALUES
+("726.761.547-37", "Arnaldo Coelho", "13914-567", "35", NULL),
+("877.641.789-18", "Joana Mello", "13912-485", "28", "Ap23 Bl13"),
+("974.259.245-44", "Ana Júlia Machado", "13987-234", "234", "Fundos");
+
+INSERT INTO pedido VALUES
+("726.761.547-37", NULL, "2023-01-02", "2023-02-01", "2023-02-01", 300),
+("877.641.789-18", NULL, "2023-01-06", "2023-02-05", "2023-02-05", 250),
+("974.259.245-44", NULL, "2023-01-15", "2023-02-14", NULL, NULL);
+
+INSERT INTO telefone VALUES
+("726.761.547-37", "19-58092-3637"),
+("877.641.789-18", "19-58453-3637"),
+("877.641.789-18", "19-67692-3447"),
+("974.259.245-44", "19-24392-6637"),
+("974.259.245-44", "19-67892-3437");
+
+
