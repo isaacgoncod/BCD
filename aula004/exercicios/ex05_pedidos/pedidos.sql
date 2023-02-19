@@ -33,10 +33,10 @@ CREATE TABLE pedido(
   hora_entrega TIME NOT NULL,
   hora_fim TIME NOT NULL,
   id_cliente INT NOT NULL,
-  id_intregador INT NOT NULL,
+  id_entregador INT NOT NULL,
   id_produto INT NOT NULL,
   quantidade INT NOT NULL,
   FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (id_produto) REFERENCES produto(id) ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (id_intregador) REFERENCES intregador(id) ON UPDATE CASCADE ON DELETE CASCADE
+  FOREIGN KEY (id_entregador) REFERENCES entregador(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
