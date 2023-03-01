@@ -196,3 +196,9 @@ FROM
   vw_clientes
 WHERE
   nome LIKE '%Souza';
+
+-- Exportar para CSV
+-- SELECT
+--   *
+-- FROM
+--   vw_exercicios_praticados INTO OUTFILE 'D:/senai2023/2des/03-bcd/aula06/02.projeto_academia/rel_exercicio.csv' FIELDS TERMINATED BY ';' LINES TERMINATED BY '\r\n';
