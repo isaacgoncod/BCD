@@ -90,10 +90,14 @@ CREATE TABLE
 --     "4R decrescente 12 10 8 6"
 --   );
 -- DML (importação de dados  Windows)
--- LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/aluno.csv' INTO TABLE aluno FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
--- LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
--- LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/exercicio.csv' INTO TABLE exercicio FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
--- LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/ficha.csv' INTO TABLE ficha FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/aluno.csv' INTO TABLE aluno FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/exercicio.csv' INTO TABLE exercicio FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/isaac/github/BCD/aula005/exercicios/ex02_academia/csv/ficha.csv' INTO TABLE ficha FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+
 --  iniciar o mysql com o comando "sudo mysql --local-infile=1 -u root -p" para rodar no linux
 LOAD DATA LOCAL INFILE '/tmp/aluno.csv' INTO TABLE aluno FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
 
