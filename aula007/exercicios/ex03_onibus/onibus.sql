@@ -50,15 +50,30 @@ LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/dirige.
 
 LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/horario.csv' INTO TABLE linha_horario FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
+--  ativar  o local_ infile 'SET GLOBAL local_infile=1;' e depois iniciar o mysql com o comando "sudo mysql --local-infile=1 -u root -p" para rodar no linux
+LOAD DATA LOCAL INFILE '/tmp/motorista.csv' INTO TABLE motorista FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/linha.csv' INTO TABLE linha FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/dirige.csv' INTO TABLE dirige FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE '/tmp/horario.csv' INTO TABLE linha_horario FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
+
 INSERT INTO
   motorista VALUE (6, "435.789.546-80", "Isaac Gonçalves");
 
+-- 1.Criar uma consulta que mostre os motoristas e telefones
+-- Detalhe: mesmo que o motorista não possua telefone deve aparecer na consulta
 SELECT
   *
 FROM
   motorista
   LEFT JOIN telefone ON id = telefone.id_motorista;
 
+-- 2. Criar uma consulta que mostre o "nome do motorista" e o "id da linha"
+-- Detalhe: Caso o motorista não possua nenhuma linha deve aparecer
 SELECT
   m.nome,
   d.id_linha
@@ -73,9 +88,11 @@ FROM
   motorista m
   LEFT JOIN dirige d ON m.id = d.id_motorista;
 
+-- Inserir uma linha ainda sem motorista
 INSERT INTO
   linha VALUE ("linha6", "Pedreira x Arcadas");
 
+-- Detalhe: Caso a linha não possua motorista deve aparecer
 SELECT
   m.nome,
   l.id
@@ -84,8 +101,27 @@ FROM
   JOIN dirige d ON m.id = d.id_motorista
   RIGHT JOIN linha l ON d.id_linha = l.id;
 
+-- Detalhe: A consulta deve mostrar tanto motoristas com ou sem linha e linhas sem motoristas
+-- A admnistração da empresa de onibus, percebeu qe existe uma linha sem motorista e um motorista sem linha
+-- Registre esta linha para este motorista.
+INSERT INTO
+  dirige VALUE (6, "linha6");
+
+-- Geradas as conultas necessárias, salva como VISÕES
+-- Motoristas com seus telefones
 CREATE VIEW
-  vw_motorista_linha AS
+  vw_motorista AS
+SELECT
+  m.id,
+  m.nome,
+  t.telefone AS telefone
+FROM
+  motorista m
+  LEFT JOIN telefone t ON m.id = t.id_motorista;
+
+-- Nomes dos motoristas e linhas que dirige
+CREATE VIEW
+  vw_moto_x_linha AS
 SELECT
   m.nome,
   d.id_linha
@@ -101,5 +137,39 @@ FROM
   JOIN dirige d ON m.id = d.id_motorista
   RIGHT JOIN linha l ON d.id_linha = l.id;
 
-INSERT INTO
-  dirige VALUE (6, "linha6");
+-- testar as visões
+SELECT
+  *
+FROM
+  vw_motorista;
+
+SELECT
+  *
+FROM
+  vw_moto_x_linha;
+
+--Mostre o nome, os telefone e id_linha do motorista ou motoristas da linha1
+SELECT
+  m.nome,
+  t.telefone
+FROM
+  motorista m
+  LEFT JOIN telefone t ON m.id = t.id_motorista
+UNION
+SELECT
+  m.nome,
+  d.id_linha
+FROM
+  motorista m
+  JOIN telefone t ON m.id = t.id_motorista
+  LEFT JOIN dirige d ON m.id = d.id_motorista;
+
+-- Mostre os horários da linha1
+SELECT
+  *
+FROM
+  linha_horario
+WHERE
+  id_linha = 'Linha1';
+
+-- Mostre o id_linha das linhas que tenham horário as 11:00hs.
