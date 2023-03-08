@@ -40,15 +40,15 @@ CREATE TABLE
   );
 
 -- DML (importação de dados  Windows)
-LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/motorista.csv' INTO TABLE motorista FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/motorista.csv' INTO TABLE motorista FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/linha.csv' INTO TABLE linha FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/linha.csv' INTO TABLE linha FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/dirige.csv' INTO TABLE dirige FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/dirige.csv' INTO TABLE dirige FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/horario.csv' INTO TABLE linha_horario FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula007/exercicios/ex03_onibus/csv/horario.csv' INTO TABLE linha_horario FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
 --  ativar  o local_ infile 'SET GLOBAL local_infile=1;' e depois iniciar o mysql com o comando "sudo mysql --local-infile=1 -u root -p" para rodar no linux
 LOAD DATA LOCAL INFILE '/tmp/motorista.csv' INTO TABLE motorista FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\n" IGNORE 1 ROWS;
