@@ -19,7 +19,7 @@ CREATE TABLE
     rua VARCHAR(255) NOT NULL,
     bairro VARCHAR(255) NOT NULL,
     cidade VARCHAR(255) NOT NULL,
-    uf VARCHAR(2) NOT NULL,
+    uf VARCHAR(255) NOT NULL,
     veiculo_placa VARCHAR(255) NOT NULL,
     FOREIGN KEY (veiculo_placa) REFERENCES veiculo (placa) ON UPDATE CASCADE ON DELETE CASCADE
   );
@@ -42,8 +42,10 @@ CREATE TABLE
 CREATE TABLE
   estacionamento (
     id INT NOT NULL PRIMARY KEY,
-    entrada VARCHAR(255) NOT NULL,
-    saida VARCHAR(255) NOT NULL,
+    entrada DATE NOT NULL,
+    hora_entrada VARCHAR(255) NOT NULL,
+    saida DATE NOT NULL,
+    hora_saida VARCHAR(255) NOT NULL,
     valor FLOAT (5, 2) NOT NULL,
     cliente_cpf VARCHAR(255) NOT NULL,
     vaga_id INT NOT NULL,
