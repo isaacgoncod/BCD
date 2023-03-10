@@ -172,4 +172,18 @@ FROM
 WHERE
   id_linha = 'Linha1';
 
--- Mostre o id_linha das linhas que tenham horário as 11:00hs.
+-- Mostre os nomes, telefones, id_linha, descricao e horários orenado por id_linha
+SELECT
+  m.nome,
+  t.telefone
+from
+  motorista m
+  JOIN telefone t ON m.id = t.id_motorista
+UNION
+SELECT
+  m.nome,
+  l.id,
+  l.descricao
+FROM
+  motorista m
+  LEFT JOIN
