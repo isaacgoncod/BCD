@@ -151,18 +151,14 @@ FROM
 --Mostre o nome, os telefone e id_linha do motorista ou motoristas da linha1
 SELECT
   m.nome,
-  t.telefone
-FROM
-  motorista m
-  LEFT JOIN telefone t ON m.id = t.id_motorista
-UNION
-SELECT
-  m.nome,
+  t.telefone,
   d.id_linha
 FROM
   motorista m
+  JOIN dirige d ON m.id = d.id_motorista
   JOIN telefone t ON m.id = t.id_motorista
-  LEFT JOIN dirige d ON m.id = d.id_motorista;
+WHERE
+  d.id_linha = 'linha1';
 
 -- Mostre os horários da linha1
 SELECT
@@ -172,18 +168,47 @@ FROM
 WHERE
   id_linha = 'Linha1';
 
+--  Mostre o id_linha das linhas que tenham horário as 11:00hs.
+SELECT
+  id_linha
+FROM
+  linha_horario
+WHERE
+  horario_partida = '11:00';
+
 -- Mostre os nomes, telefones, id_linha, descricao e horários orenado por id_linha
 SELECT
   m.nome,
-  t.telefone
-from
-  motorista m
-  JOIN telefone t ON m.id = t.id_motorista
-UNION
-SELECT
-  m.nome,
+  t.telefone,
   l.id,
-  l.descricao
+  l.descricao_linha,
+  lh.horario_partida
 FROM
   motorista m
-  LEFT JOIN
+  JOIN dirige d ON m.id = d.id_motorista
+  JOIN telefone t ON m.id = t.id_motorista
+  JOIN linha l ON d.id_linha = l.id
+  JOIN linha_horario lh ON l.id = lh.id_linha
+ORDER BY
+  l.id;
+
+--  Mostre uma consulta que mostre os nomes dos motoristas e quantas linhas este dirige
+SELECT
+  m.nome,
+  COUNT(d.id_linha) AS qtd_linhas
+FROM
+  motorista m
+  LEFT JOIN dirige d ON m.id = d.id_motorista
+GROUP BY
+  m.id;
+
+--Mostre o id_linha, a descrição e quantos motoristas esta possui
+SELECT
+  l.id,
+  l.descricao_linha,
+  COUNT(d.id_motorista) AS qtd_motoristas
+FROM
+  linha l
+  LEFT JOIN dirige d ON l.id = d.id_linha
+GROUP BY
+  l.id;
