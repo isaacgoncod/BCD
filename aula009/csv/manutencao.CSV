@@ -1,0 +1,27 @@
+id_manutencao;inicio_manutencao;fim_manutencao;descricao;matricula_func;placa_veiculo
+1;2022-02-25;2022-03-04;Lanterna queimada;48482;DEA-7981
+2;2022-03-13;2022-03-21;Farol queimado;48542;CBC-4945
+3;2022-03-29;2022-04-05;Troca de pneus dianteiros;48522;BEE-7735
+4;2022-04-14;2022-04-24;Troca de pneus dianteiros;48502;CBA-4403
+5;2022-04-30;2022-05-07;Farol queimado;48502;BBC-8504
+6;2022-05-16;2022-05-25;Troca de pneus trazeiros;48482;BEB-5885
+7;2022-06-05;2022-06-10;Retrovizor quebrado;48482;EDB-2475
+8;2022-06-25;2022-07-02;Troca de óleo e revisão geral;48502;CBC-4945
+9;2022-07-15;2022-07-19;Troca de Flúido de Freio;48482;EDB-2475
+10;2022-08-04;2022-08-10;Problemas no cabo do acelerador;48502;DEA-7981
+11;2022-08-24;2022-08-31;Pane elétrica;48562;CBA-4403
+12;2022-08-27;2022-09-04;Rebimboca da parafuzeta;48522;BBC-8504
+13;2022-08-30;2022-09-04;Troca de cavalos por poneis;48542;BEE-7735
+14;2022-09-02;2022-09-07;Lanterna queimada;48482;BEB-5885
+15;2022-09-05;2022-09-15;Farol queimado;48562;CBA-4403
+16;2022-09-08;2022-09-15;Troca de pneus dianteiros;48522;BEE-7735
+17;2022-09-11;2022-09-15;Troca de pneus dianteiros;48502;BBC-8504
+18;2022-09-14;2022-09-23;Farol direito queimado;48502;CBC-4945
+19;2022-09-17;2022-09-21;Troca de pneus trazeiros;48562;DEA-7981
+20;2022-09-26;2022-10-06;Retrovizor direito quebrado;48562;CBC-4945
+21;2022-10-05;2022-10-10;Troca de óleo do motor;48562;EDB-2475
+22;2022-10-14;2022-10-24;Troca de placa;48542;CBA-4403
+23;2022-10-23;2022-10-26;Intalação de rastreador;48542;BEB-5885
+24;2022-11-01;2022-11-10;Troca de óleo e revisão geral;48542;BBC-8504
+25;2022-11-10;2022-11-13;Troca de pneus dianteiros;48482;DEA-7981
+26;2022-11-19;2022-11-25;Farol queimado esquerdo;48542;CBC-4945
