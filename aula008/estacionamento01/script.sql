@@ -42,10 +42,8 @@ CREATE TABLE
 CREATE TABLE
   estacionamento (
     id INT NOT NULL PRIMARY KEY,
-    entrada DATE NOT NULL,
-    hora_entrada VARCHAR(255) NOT NULL,
-    saida DATE NOT NULL,
-    hora_saida VARCHAR(255) NOT NULL,
+    entrada DATETIME NOT NULL,
+    saida DATETIME NOT NULL,
     valor FLOAT (5, 2) NOT NULL,
     cliente_cpf VARCHAR(255) NOT NULL,
     vaga_id INT NOT NULL,
@@ -53,12 +51,54 @@ CREATE TABLE
     FOREIGN KEY (vaga_id) REFERENCES vaga (id) ON UPDATE CASCADE ON DELETE CASCADE
   );
 
-LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv/veiculo.csv' INTO TABLE veiculo FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv2/veiculo.csv' INTO TABLE veiculo FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv/cliente.csv' INTO TABLE cliente FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv2/cliente.csv' INTO TABLE cliente FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv2/telefone.csv' INTO TABLE telefone FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv/vaga.csv' INTO TABLE vaga FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv2/vaga.csv' INTO TABLE vaga FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv/estacionamento.csv' INTO TABLE estacionamento FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+LOAD DATA INFILE 'E:/isaac/github/BCD/aula008/csv2/estacionamento.csv' INTO TABLE estacionamento FIELDS TERMINATED BY ';' ENCLOSED BY '"' LINES TERMINATED BY "\r\n" IGNORE 1 ROWS;
+
+SELECT
+  *
+FROM
+  veiculo;
+
+SELECT
+  *
+FROM
+  cliente;
+
+SELECT
+  *
+FROM
+  telefone;
+
+SELECT
+  *
+FROM
+  vaga;
+
+SELECT
+  *
+FROM
+  estacionamento;
+
+CREATE VIEW
+  vw_cliente AS
+SELECT
+  c.cpf,
+  c.nome,
+  c.bairro,
+  c.cidade,
+  c.uf,
+  t.numero as telefone
+FROM
+  cliente c
+  LEFT JOIN telefone t ON c.cpf = t.cpf_cliente;
+
+
+
+
