@@ -1,5 +1,5 @@
 
-3# Banco de Dados Relacinais
+# Banco de Dados Relacinais
 
 ## 1º - Forma Normal
 
